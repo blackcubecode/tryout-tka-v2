@@ -1,0 +1,29 @@
+﻿# Data sensitif — JANGAN di-commit
+config.php
+config_admin.php
+*.cnf
+peserta_contoh/*.csv
+peserta_contoh/kartu_peserta.*
+db/seed_*.sql
+db/backup_*.sql
+seb/*.seb
+
+# Output analitik
+analisis/*.xlsx
+analisis/*.png
+
+# Cache & log
+*.log
+*.tmp
+__pycache__/
+*.pyc
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~

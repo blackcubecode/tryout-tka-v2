@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Panduan Instalasi via GitHub - Tryout TKA v2</title>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 24px; line-height: 1.7; color: #2b2b2b; }
+  h1 { color: #1a4f8b; border-bottom: 3px solid #4a90e2; padding-bottom: 8px; }
+  h2 { color: #1a4f8b; margin-top: 30px; border-bottom: 1px solid #d0d7e2; padding-bottom: 5px; }
+  code { background: #eef2f7; padding: 2px 6px; border-radius: 4px; font-family: Consolas, monospace; font-size: 13px; }
+  pre { background: #f5f9ff; border: 1px solid #d0d7e2; padding: 12px; border-radius: 4px; overflow-x: auto; }
+  .box { background: #fff3cd; border-left: 4px solid #f39c12; padding: 15px; margin: 20px 0; border-radius: 4px; }
+  .danger { background: #f8d7da; border-left: 4px solid #e74c3c; padding: 15px; margin: 20px 0; border-radius: 4px; }
+  .ok { background: #d4edda; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 4px; }
+  .no-print { text-align: center; margin-bottom: 20px; }
+  .btn-print { background: #1a4f8b; color: #fff; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
+  @media print { .no-print { display: none; } }
+</style>
+</head>
+<body>
+
+<div class="no-print">
+  <button class="btn-print" onclick="window.print()">🖨️ Cetak / Simpan sebagai PDF</button>
+</div>
+
+<h1>Panduan Instalasi dari GitHub — Tryout TKA v2</h1>
+<p><b>Untuk Sekolah Penerima</b></p>
+
+<p>Panduan ini menjelaskan cara mengunduh dan memasang sistem Tryout TKA v2 dari repositori GitHub. Pastikan komputer server Anda sudah terinstall <b>XAMPP</b> dan <b>Python</b> (opsional).</p>
+
+<h2>Tahap 1 — Unduh dari GitHub</h2>
+<ol>
+  <li>Buka browser dan kunjungi halaman repository GitHub Anda (contoh: <code>https://github.com/blackcubecode/tryout-tka-v2</code>).</li>
+  <li>Klik tombol hijau <b>"Code"</b> → pilih <b>"Download ZIP"</b>.</li>
+  <li>Extract file ZIP yang terunduh (misalnya ke folder <code>D:\Tryout TKA v2</code>).</li>
+</ol>
+<p><i>Alternatif via Git (jika terinstall):</i></p>
+<pre><code>cd D:\
+git clone https://github.com/blackcubecode/tryout-tka-v2.git</code></pre>
+
+<h2>Tahap 2 — Rename File Konfigurasi</h2>
+<p>Karena paket distribusi dibersihkan, file konfigurasi asli dihapus. Anda wajib me-rename file contoh:</p>
+<ol>
+  <li>Buka folder <code>web</code>. Rename <code>config.example.php</code> menjadi <b><code>config.php</code></b>.</li>
+  <li>Buka folder <code>admin</code>. Rename <code>config_admin.example.php</code> menjadi <b><code>config_admin.php</code></b>.</li>
+</ol>
+
+<h2>Tahap 3 — Edit Konfigurasi Sekolah & Database</h2>
+<ol>
+  <li>Buka file <code>web\config.php</code> di Notepad. Sesuaikan baris:
+    <pre><code>define('DB_PASS', ''); // Isi password MariaDB jika ada
+define('APP_SEKOLAH', 'SD Negeri Nama Sekolah Anda');</code></pre>
+  </li>
+  <li>Buka file <code>admin\config_admin.php</code> di Notepad. Sesuaikan <code>APP_SEKOLAH</code> dan ganti password admin default:
+    <pre><code>define('ADMIN_PASS', 'PasswordBaru2026!');</code></pre>
+  </li>
+</ol>
+
+<h2>Tahap 4 — Setup Database (SQL)</h2>
+<p>Buka PowerShell, lalu jalankan perintah:</p>
+<pre><code>cd "C:\xampp\mysql\bin"
+Get-Content "D:\Tryout TKA v2\db\01_schema.sql" -Raw | .\mysql.exe -u root</code></pre>
+<p>Lalu, isi soal bawaan (jika ingin menggunakan 60 soal latihan):</p>
+<pre><code>Get-Content "D:\Tryout TKA v2\db\seed_soal.sql" -Raw | .\mysql.exe -u root</code></pre>
+
+<h2>Tahap 5 — Copy Web ke XAMPP</h2>
+<pre><code># Copy folder web ke htdocs\tka
+Copy-Item "D:\Tryout TKA v2\web\*" "C:\xampp\htdocs\tka" -Recurse -Force
+
+# Copy folder admin ke htdocs\tka-admin
+Copy-Item "D:\Tryout TKA v2\admin\*" "C:\xampp\htdocs\tka-admin" -Recurse -Force</code></pre>
+
+<h2>Tahap 6 — Buat Peserta & Token Baru</h2>
+<ol>
+  <li>Buka <code>D:\Tryout TKA v2\peserta_contoh\daftar_siswa_contoh.csv</code> di Notepad. Ganti isinya dengan nama siswa sekolah Anda (format: <code>nama;kelas</code>).</li>
+  <li>Jalankan perintah ini di PowerShell untuk generate token & kartu:
+    <pre><code>cd "D:\Tryout TKA v2\tools"
+python buat_peserta.py</code></pre>
+  </li>
+  <li>Masukkan data peserta yang baru dibuat ke database:
+    <pre><code>cd "C:\xampp\mysql\bin"
+Get-Content "D:\Tryout TKA v2\db\seed_peserta.sql" -Raw | .\mysql.exe -u root</code></pre>
+  </li>
+  <li>Cetak kartu peserta: buka <code>D:\Tryout TKA v2\peserta_contoh\kartu_peserta.html</code> di browser, tekan Ctrl+P.</li>
+</ol>
+
+<div class="ok">
+  <b>✅ Selesai!</b><br>
+  Akses UI Siswa: <code>http://localhost/tka/login.php</code><br>
+  Akses Dashboard Admin: <code>http://localhost/tka-admin/login_admin.php</code> (Username: <code>admin</code>, Password: sesuai yang Anda set di Tahap 3).
+</div>
+
+<div class="danger">
+  <b>🚨 PENTING:</b> Karena Anda mengunduh dari GitHub, pastikan Anda membaca <b>PANDUAN_INSTALASI.html</b> dan <b>PANDUAN_LENGKAP_V2.html</b> di folder <code>docs</code> untuk konfigurasi lanjutan (Firewall, IP LAN, dan pembuatan file SEB).
+</div>
+
+</body>
+</html>

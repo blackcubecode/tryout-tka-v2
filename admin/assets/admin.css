@@ -1,0 +1,158 @@
+﻿* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 15px;
+  background: #f4f6fa;
+  color: #2b2b2b;
+}
+
+.halaman-login {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a4f8b 0%, #4a90e2 100%);
+  padding: 20px;
+}
+.kotak-login {
+  background: #fff; border-radius: 16px; padding: 40px 36px;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+.kotak-login h1 { margin: 0 0 6px; font-size: 24px; color: #1a4f8b; }
+.kotak-login .sub { margin: 0 0 28px; color: #666; font-size: 13px; }
+.kotak-login label { display: block; margin: 18px 0 6px; font-weight: 600; font-size: 14px; }
+.kotak-login input {
+  width: 100%; padding: 12px 16px; font-size: 16px;
+  border: 2px solid #d0d7e2; border-radius: 10px; outline: none;
+}
+.kotak-login input:focus { border-color: #4a90e2; }
+.kotak-login .catatan { margin: 22px 0 0; font-size: 12px; color: #888; text-align: center; }
+.pesan-error {
+  background: #ffe9e9; border: 1px solid #f5b0b0; color: #b00020;
+  padding: 10px 14px; border-radius: 8px; font-size: 14px; margin-bottom: 16px;
+}
+.tombol-utama {
+  display: block; background: #4a90e2; color: #fff; border: none;
+  padding: 14px; font-size: 16px; font-weight: 600;
+  border-radius: 10px; cursor: pointer; width: 100%; margin-top: 24px;
+}
+.tombol-utama:hover { background: #3a7bc8; }
+
+.topbar-admin {
+  background: #1a4f8b; color: #fff; padding: 12px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.topbar-admin .kiri { display: flex; flex-direction: column; gap: 2px; }
+.topbar-admin .judul { font-size: 18px; font-weight: 700; }
+.topbar-admin .sub { font-size: 12px; opacity: .85; }
+.topbar-admin .kanan { display: flex; gap: 16px; align-items: center; font-size: 14px; }
+.tautan-logout { color: #ffd93d; text-decoration: none; font-weight: 600; }
+.tautan-logout:hover { text-decoration: underline; }
+.tautan-back { color: #ffd93d; text-decoration: none; font-size: 14px; margin-bottom: 2px; }
+
+.konten-admin { max-width: 1200px; margin: 24px auto; padding: 0 24px; }
+.konten-admin h2 { font-size: 20px; color: #1a4f8b; margin: 24px 0 16px; }
+.statistik { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 8px; }
+.kartu-stat {
+  background: #fff; border-radius: 12px; padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  text-align: center;
+}
+.kartu-stat .angka { font-size: 32px; font-weight: 700; color: #1a4f8b; }
+.kartu-stat .label { font-size: 13px; color: #666; margin-top: 4px; }
+.kartu-stat.biru .angka { color: #4a90e2; }
+.kartu-stat.hijau .angka { color: #27ae60; }
+.kartu-stat.merah .angka { color: #e74c3c; }
+.kartu-stat.kuning .angka { color: #f39c12; }
+
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.menu-kartu {
+  display: block; background: #fff; border-radius: 12px; padding: 24px;
+  text-decoration: none; color: inherit;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  transition: transform .12s, box-shadow .12s;
+  text-align: center;
+}
+.menu-kartu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+.menu-kartu .ikon { font-size: 40px; margin-bottom: 12px; }
+.menu-kartu .judul-menu { font-size: 16px; font-weight: 600; color: #1a4f8b; }
+.menu-kartu .deskripsi { font-size: 13px; color: #888; margin-top: 6px; }
+
+.toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 12px; padding: 14px 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  margin-bottom: 20px; flex-wrap: wrap; gap: 12px;
+}
+.filter-form { display: flex; align-items: center; gap: 10px; }
+.filter-form label { font-weight: 600; font-size: 14px; }
+.filter-form select {
+  padding: 8px 12px; border: 2px solid #d0d7e2; border-radius: 8px;
+  font-size: 14px; background: #fff; cursor: pointer;
+}
+.tombol-hijau {
+  background: #27ae60; color: #fff; text-decoration: none;
+  padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
+}
+.tombol-hijau:hover { background: #219a52; }
+
+.tabel-wrapper {
+  background: #fff; border-radius: 12px; padding: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  overflow-x: auto;
+}
+.tabel-data { width: 100%; border-collapse: collapse; }
+.tabel-data thead {
+  background: #1a4f8b; color: #fff;
+}
+.tabel-data th, .tabel-data td {
+  padding: 12px 16px; text-align: left; font-size: 14px;
+}
+.tabel-data th { font-weight: 600; }
+.tabel-data tbody tr { border-bottom: 1px solid #eef2f7; }
+.tabel-data tbody tr:hover { background: #f5f9ff; }
+.tabel-data tbody tr:last-child { border-bottom: none; }
+.tabel-data .nilai { font-family: 'Consolas', monospace; font-weight: 600; }
+.tabel-data .tebal { color: #1a4f8b; font-size: 15px; }
+
+@media (max-width: 720px) {
+  .topbar-admin { flex-direction: column; gap: 8px; text-align: center; }
+  .statistik { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === Tabel & form edit === */
+.edit-inline {
+  padding: 6px 10px; border: 1px solid #d0d7e2; border-radius: 6px;
+  font-size: 13px; width: 100%; max-width: 220px;
+}
+.edit-inline:focus { border-color: #4a90e2; outline: none; }
+.aksi-sel { display: flex; gap: 4px; flex-wrap: wrap; }
+.btn-kecil {
+  padding: 6px 10px; font-size: 12px; font-weight: 600;
+  border: none; border-radius: 6px; cursor: pointer;
+}
+.btn-biru   { background: #4a90e2; color: #fff; }
+.btn-biru:hover { background: #3a7bc8; }
+.btn-kuning { background: #f39c12; color: #fff; }
+.btn-kuning:hover { background: #e67e22; }
+.btn-merah  { background: #e74c3c; color: #fff; }
+.btn-merah:hover { background: #c0392b; }
+.badge {
+  display: inline-block; padding: 4px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 600;
+}
+.badge-hijau  { background: #d4edda; color: #155724; }
+.badge-merah  { background: #f8d7da; color: #721c24; }
+.pesan-sukses {
+  background: #d4edda; border: 1px solid #a3d9b0; color: #155724;
+  padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;
+}
+.token-badge {
+  font-family: 'Consolas', monospace; font-weight: 700;
+  background: #eef2f7; padding: 6px 14px; border-radius: 6px;
+  letter-spacing: 2px; font-size: 15px; color: #1a4f8b;
+}

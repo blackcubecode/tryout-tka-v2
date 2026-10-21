@@ -1,0 +1,9 @@
+﻿<FilesMatch "^(simpan|submit)\.php$">
+  <LimitExcept POST>
+    Require all denied
+  </LimitExcept>
+</FilesMatch>
+
+<FilesMatch "\.(sql|md|log|txt)$">
+  Require all denied
+</FilesMatch>
