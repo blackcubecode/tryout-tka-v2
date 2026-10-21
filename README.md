@@ -163,7 +163,7 @@ Jika sistem ini bermanfaat bagi sekolah Anda dan ingin mendukung pengembangan fi
 ### 📞 Kontak Developer
 
 **BLACK CUBE CODE**  
-*Solusi Teknologi Pendidikan Terjangkau*
+*Independent Developer Expert Advisor and Algorithmic Trading*
 
 - **Telegram:** [@blackcubecodeadmin](https://t.me/blackcubecodeadmin)
 - **GitHub Issues:** [Laporkan Bug atau Ajukan Fitur](https://github.com/blackcubecode/tryout-tka-v2/issues)
