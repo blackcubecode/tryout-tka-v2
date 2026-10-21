@@ -107,10 +107,10 @@ Sistem dirancang agar ringan dan portabel untuk sekolah dengan infrastruktur ter
 |                                            |
 | Aplikasi:                                  |
 | - /tka/          : Antarmuka siswa         |
-| - /tka-admin/    : Dashboard admin        |
+| - /tka-admin/    : Dashboard admin         |
 |                                            |
 | Database: tka                              |
-| Python 3.12: Opsional untuk analitik        |
+| Python 3.12: Opsional untuk analitik       |
 +--------------------------------------------+
 ```
 
